@@ -1,0 +1,128 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "extensionHost",
+            "request": "launch",
+            "name": "Launch Extension",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/app.js"
+        },
+        {
+            "name": "Attach to packager",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type": "reactnative",
+            "request": "attach",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "port": 9229
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/app.js"
+        },
+        {
+            "name": "Attach to packager",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type": "reactnative",
+            "request": "attach",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
+        },
+        {
+            "name": "Debug iOS",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type": "reactnative",
+            "request": "launch",
+            "platform": "ios",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
+        },
+        {
+            "name": "Debug Android",
+            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
+            "type": "reactnative",
+            "request": "launch",
+            "platform": "android",
+            "sourceMaps": true,
+            "outDir": "${workspaceRoot}/.vscode/.react"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Executar Programa",
+            "program": "${workspaceFolder}\\start"
+        },
+        {
+            "version": "2.0.0",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "tasks": [
+                {
+                    "taskName": "Build APK Debug",
+                    "group": "build",
+                    "type": "shell",
+                    "windows": {
+                        "command": "cd android; if($?) {./gradlew assembleDebug}"
+                    },
+                    "linux": {
+                        "command": "cd android && ./gradlew assembleDebug"
+                    }
+                },
+                {
+                    "taskName": "Build APK Release",
+                    "group": "build",
+                    "type": "shell",
+                    "windows": {
+                        "command": "cd android; if($?) {./gradlew assembleRelease}"
+                    },
+                    "linux": {
+                        "command": "cd android && ./gradlew assembleRelease"
+                    }
+                },
+                {
+                    "taskName": "Generate Android Bundle",
+                    "group": "build",
+                    "type": "shell",
+                    "command": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/main.jsbundle"
+                },
+                {
+                    "taskName": "Generate iOS Bundle",
+                    "group": "build",
+                    "type": "shell",
+                    "command": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/main.jsbundle"
+                }
+            ]
+        }
+    ]
+}
