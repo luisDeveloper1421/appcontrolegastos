@@ -33,24 +33,18 @@ export default class Login extends Component {
 		firebase.auth().signOut();
 	}
 
-
-
 	logar() {
 		if (this.state.email != '' && this.state.senha != '') {
 			firebase.auth().onAuthStateChanged((user) => {
 				if (user) {
 					this.props.navigation.navigate('Iterna');
 				}
-			}).catch((error) => {
-				alert(error.code)
-			});
+			})
 
 			firebase.auth().signInWithEmailAndPassword(
 				this.state.email,
 				this.state.senha
-			).catch((error) => {
-				alert(error.code)
-			});
+			)
 		}
 	}
 
